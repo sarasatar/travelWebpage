@@ -8,6 +8,25 @@
     <artifactId>test_demo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <build>
+    <plugins>
+
+    <plugin>
+        <groupId>com.github.webdriverextensions</groupId>
+        <artifactId>webdriverextensions-maven-plugin</artifactId>
+        <version>3.1.1</version>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>install-drivers</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+
+    </plugins>
+    </build>
+
     <dependencies>
 
     <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -25,15 +44,15 @@
         <scope>test</scope>
     </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-remote-driver -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-chrome-driver</artifactId>
-            <version>3.14.0</version>
+            <artifactId>selenium-remote-driver</artifactId>
+            <version>3.141.59</version>
         </dependency>
 
-
     </dependencies>
+
 
 
 </project>
