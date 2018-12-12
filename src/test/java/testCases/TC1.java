@@ -29,79 +29,34 @@ public class TC1 {
 
         System.setProperty("webdriver.gecko.driver", "/Users/gicastano/IdeaProjects/test_demo/chromedriver");
 
+        //driver.manage().deleteAllCookies();
         driver = new ChromeDriver();
         baseUrl= "https://www.cheaptickets.com/";
 
     }
 
-    //Step 1: click on flight tab
     @Test
     public void setFlightTab() {
 
         driver.get(baseUrl);
         flight.clickOnFlightTab(driver);
+        flight.clickOnRoundTripTab(driver);
+        flight.getDepartureField(driver).sendKeys("Medellin, Colombia (MDE-Jose Maria Cordova Intl.)");
+        flight.getDestinationField(driver).sendKeys("Miami, FL (MIA-Miami Intl.)");
+        flight.getDepartingCalendar(driver).sendKeys("12/31/2018");
+        flight.getReturningCalendar(driver).sendKeys("01/12/2019");
 
-    }
-    /*
-    //Step 2: click on round trip
-    @Test
-    public void setRoundTripTab() {
-        this.roundTripTab=roundTripTab;
-        roundTripTab.click();
-    }
+        WebElement adultDropdown = flight.getAdultDropdown(driver);
+        Select adults = new Select(adultDropdown);
+        adults.selectByValue("2");
 
-    //Step 3: Fill all required fields
-    @Test
-    public void setDepartureField() {
-        this.departureField = departureField;
-        departureField.sendKeys("Medellin, Colombia (MDE-Jose Maria Cordova Intl.)");
-    }
-    @Test
-    public void setDestinationField() {
-        this.destinationField = destinationField;
-        destinationField.sendKeys("Miami, FL (MIA-Miami Intl.)");
-    }
-    @Test
-    public void setDepartingCalendar() {
-        this.departingCalendar = departingCalendar;
-        departingCalendar.sendKeys("12/31/2018");
-    }
-    @Test
-    public void setReturningCalendar() {
-        this.returningCalendar = returningCalendar;
-        returningCalendar.sendKeys("12/31/2018");
-    }
-    @Test
-    public void setAdultDropdown() {
-         this.adultDropdown = adultDropdown;
-         Select adults = new Select(adultDropdown);
-         adults.selectByIndex(2);
-
-    }
-    @Test
-    public void setChildrenDropdown() {
-        Select children = new Select(childrenDropdown);
-        children.selectByIndex(0);
-    }
-
-     //Step 4: Click on search
-
-    @Test
-    public void setSearchButton() {
-        this.searchButton = searchButton;
-        searchButton.click();
-    }
-
-    //Expected Result: destination correct set
-
-    @Test
-    public void destinationConfirm(){
+        flight.clickOnSearchButton(driver);
 
         WebElement messageFind= driver.findElement(By.xpath("html/body/div[2]/header/h1/div/span[1]"));
         String message = messageFind.getText();
         String expectedMessage = "Select your departure to Miami";
 
         assertEquals(message,expectedMessage);
-    }*/
+    }
 
 }
