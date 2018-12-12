@@ -44,7 +44,8 @@ public class TC1 {
         flight.getDepartureField(driver).sendKeys("Medellin, Colombia (MDE-Jose Maria Cordova Intl.)");
         flight.getDestinationField(driver).sendKeys("Miami, FL (MIA-Miami Intl.)");
         flight.getDepartingCalendar(driver).sendKeys("12/31/2018");
-        flight.getReturningCalendar(driver).sendKeys("01/12/2019");
+        //flight.getDepartingCalendar(driver).clear();
+        //flight.getReturningCalendar(driver).sendKeys("01/12/2019");
 
         WebElement adultDropdown = flight.getAdultDropdown(driver);
         Select adults = new Select(adultDropdown);
