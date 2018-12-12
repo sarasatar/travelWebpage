@@ -3,7 +3,11 @@
 <suite name="AcamicaSuiteTest">
     <test name="CheapTickets.com">
         <classes>
-            <class name="cheaptickets.com.gui.flightTab"/>
+            <class name="testCases.TC1"/>
+            <class name="testCases.TC2"/>
+            <class name="testCases.TC3"/>
+            <class name="testCases.TC4"/>
+            <class name="testCases.TC5"/>
         </classes>
     </test>
 </suite>

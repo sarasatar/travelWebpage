@@ -9,6 +9,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.testng.AssertJUnit.assertEquals;
 
 
@@ -45,6 +47,7 @@ public class TC2 {
         
 
         flight.clickOnSearchButton(driver);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         WebElement messageFind= driver.findElement(By.xpath("/html/body/meso-native-marquee/section/div/div/div[1]/div/div/div[1]/div/section[1]/form/div[2]/div/ul/li[1]/a"));
         String message = messageFind.getText();

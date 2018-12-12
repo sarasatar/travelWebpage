@@ -58,7 +58,7 @@ public class TC5 {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         driver.findElement(By.xpath("/html/body/div[6]/div/div[1]/ul/li[1]/a")).click();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 
 
         WebElement messageFind= driver.findElement(By.xpath("/html/body/div[4]/form/div[3]/div[1]/div/div[1]/div/div[2]/div[1]/div/div[2]/div[2]/button"));

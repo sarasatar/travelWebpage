@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 /**
  * @Author: gicastano
+ * This class contains the elements of the Simple Flight search
  */
 
 public class flight {
@@ -85,9 +86,10 @@ public class flight {
     }
 
 
-    public static void getPreferredAirlineDropdown(WebDriver driver) {
-        element = driver.findElement((By.xpath("//*[@id=\"flight-advanced-preferred-airline-hp-flight\"]")));
-        element.click();
+    public static WebElement getPreferredAirlineDropdown(WebDriver driver) {
+        element = driver.findElement((By.id("flight-advanced-preferred-airline-hp-flight")));
+        return element;
+
     }
 
     public static void getPreferredClassDropdown(WebDriver driver){
