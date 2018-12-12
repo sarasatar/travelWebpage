@@ -9,15 +9,14 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
-
 import static org.testng.AssertJUnit.assertEquals;
+
 
 /**
  * @Author: gicastano
- * @Description; this test case is to validate that I can do a basic search and that the Returning date is put automatically
+ * @Description; Negative Test - this test case is to validate that I can't set date in different format that MM/DD/YYYY
  */
-public class TC1 {
+public class TC2 {
 
     private WebDriver driver;
     private String baseUrl;
@@ -42,29 +41,21 @@ public class TC1 {
         flight.clickOnRoundTripTab(driver);
         flight.getDepartureField(driver).sendKeys("Medellin, Colombia (MDE-Jose Maria Cordova Intl.)");
         flight.getDestinationField(driver).sendKeys("Miami, FL (MIA-Miami Intl.)");
-        flight.getDepartingCalendar(driver).sendKeys("12/31/2018");
-        //flight.getDepartingCalendar(driver).clear();
-        //flight.getReturningCalendar(driver).sendKeys("01/12/2019");
-
-        WebElement adultDropdown = flight.getAdultDropdown(driver);
-        Select adults = new Select(adultDropdown);
-        adults.selectByValue("2");
+        flight.getDepartingCalendar(driver).sendKeys("13/01/2018");
+        
 
         flight.clickOnSearchButton(driver);
 
-        WebElement messageFind= driver.findElement(By.xpath("html/body/div[2]/header/h1/div/span[1]"));
+        WebElement messageFind= driver.findElement(By.xpath("/html/body/meso-native-marquee/section/div/div/div[1]/div/div/div[1]/div/section[1]/form/div[2]/div/ul/li[1]/a"));
         String message = messageFind.getText();
-        String expectedMessage = "Select your departure to Miami";
+        String expectedMessage = "Date format should be MM/dd/yyyy.";
 
         assertEquals(message,expectedMessage);
     }
-
 
     @AfterTest
     public void closeDriver(){
         driver.get(baseUrl);
         driver.quit();
     }
-
-
 }

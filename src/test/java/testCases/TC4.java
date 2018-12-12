@@ -1,5 +1,5 @@
 package testCases;
-import cheaptickets.com.gui.flight;
+import cheaptickets.com.gui.hotel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,9 +15,9 @@ import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * @Author: gicastano
- * @Description; this test case is to validate that I can do a basic search and that the Returning date is put automatically
+ * @Description; this test case is to validate that I can do a simple hotel search
  */
-public class TC1 {
+public class TC4 {
 
     private WebDriver driver;
     private String baseUrl;
@@ -38,23 +38,26 @@ public class TC1 {
     public void setFlightTab() {
 
         driver.get(baseUrl);
-        flight.clickOnFlightTab(driver);
-        flight.clickOnRoundTripTab(driver);
-        flight.getDepartureField(driver).sendKeys("Medellin, Colombia (MDE-Jose Maria Cordova Intl.)");
-        flight.getDestinationField(driver).sendKeys("Miami, FL (MIA-Miami Intl.)");
-        flight.getDepartingCalendar(driver).sendKeys("12/31/2018");
-        //flight.getDepartingCalendar(driver).clear();
-        //flight.getReturningCalendar(driver).sendKeys("01/12/2019");
+        hotel.clickOnHotelTab(driver);
+        hotel.getGoingToField(driver).sendKeys("Amazonas, Colombia");
+        hotel.getCheckInCalendar(driver).sendKeys("01/03/2019");
 
-        WebElement adultDropdown = flight.getAdultDropdown(driver);
-        Select adults = new Select(adultDropdown);
-        adults.selectByValue("2");
+        WebElement roomsDropdown = hotel.getRoomsDropdown(driver);
+        Select room = new Select(roomsDropdown);
+        room.selectByVisibleText("1");
 
-        flight.clickOnSearchButton(driver);
+        WebElement adultsDropdown = hotel.getRoomsDropdown(driver);
+        Select adults = new Select(adultsDropdown);
+        adults.selectByVisibleText("2");
 
-        WebElement messageFind= driver.findElement(By.xpath("html/body/div[2]/header/h1/div/span[1]"));
+        hotel.clickOnSearchButton(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
+        WebElement messageFind= driver.findElement(By.xpath("/html/body/div[4]/form/div[3]/div[1]/div/div[1]/div/div[2]/div[1]/div/div[2]/div[1]/button"));
         String message = messageFind.getText();
-        String expectedMessage = "Select your departure to Miami";
+        String expectedMessage = "Amazonas, Colombia";
 
         assertEquals(message,expectedMessage);
     }
@@ -65,6 +68,5 @@ public class TC1 {
         driver.get(baseUrl);
         driver.quit();
     }
-
 
 }

@@ -9,15 +9,13 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
-
 import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * @Author: gicastano
- * @Description; this test case is to validate that I can do a basic search and that the Returning date is put automatically
+ * @Description; this test case is to validate that I can do a advanced search
  */
-public class TC1 {
+public class TC3 {
 
     private WebDriver driver;
     private String baseUrl;
@@ -48,9 +46,16 @@ public class TC1 {
 
         WebElement adultDropdown = flight.getAdultDropdown(driver);
         Select adults = new Select(adultDropdown);
-        adults.selectByValue("2");
+        adults.selectByVisibleText("2");
+
+        flight.getAdvancedOptionsDropdown(driver);
+        flight.setNonStopCheckbox(driver);
+        WebElement  preferredAirlineDropdown = flight.getPreferredAirlineDropdown(driver);
+        Select preferredAirline = new Select(preferredAirlineDropdown);
+        preferredAirline.selectByValue("AV");
 
         flight.clickOnSearchButton(driver);
+
 
         WebElement messageFind= driver.findElement(By.xpath("html/body/div[2]/header/h1/div/span[1]"));
         String message = messageFind.getText();
@@ -60,11 +65,11 @@ public class TC1 {
     }
 
 
+
     @AfterTest
     public void closeDriver(){
         driver.get(baseUrl);
         driver.quit();
     }
-
 
 }
