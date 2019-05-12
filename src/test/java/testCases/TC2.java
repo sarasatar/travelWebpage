@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -27,11 +26,17 @@ public class TC2 {
     @BeforeTest
     public void setUp() throws Exception {
 
-        System.setProperty("webdriver.gecko.driver", "/Users/gicastano/IdeaProjects/test_demo/chromedriver");
+        try {
+            System.setProperty("webdriver.gecko.driver", "/Users/gicastano/IdeaProjects/test_demo/chromedriver");
 
-        //driver.manage().deleteAllCookies();
-        driver = new ChromeDriver();
-        baseUrl= "https://www.cheaptickets.com/";
+            //driver.manage().deleteAllCookies();
+            driver = new ChromeDriver();
+            baseUrl = "https://www.cheaptickets.com/";
+        }
+        catch (exception e){
+            String f = "Something went wrong starting chromedriver";
+            System.out.println(f);
+        }
 
     }
 

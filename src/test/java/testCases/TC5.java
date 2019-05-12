@@ -27,8 +27,6 @@ public class TC5 {
     public void setUp() throws Exception {
 
         System.setProperty("webdriver.gecko.driver", "/Users/gicastano/IdeaProjects/test_demo/chromedriver");
-
-        //driver.manage().deleteAllCookies();
         driver = new ChromeDriver();
         baseUrl= "https://www.cheaptickets.com/";
 
