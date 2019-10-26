@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 
 /**
  * @Author: gicastano
@@ -14,19 +16,19 @@ public class flight {
 
     public static WebElement element = null;
 
-    @FindBy(xpath="//*[@id=\"flight-type-one-way-label-hp-flight\"]")
+    @FindBy(xpath = "//*[@id=\"flight-type-one-way-label-hp-flight\"]")
     public WebElement oneWayTab;
 
-    @FindBy(xpath="//*[@id=\"flight-type-multi-dest-label-hp-flight\"]")
+    @FindBy(xpath = "//*[@id=\"flight-type-multi-dest-label-hp-flight\"]")
     public WebElement multiCityTab;
 
-    @FindBy(xpath="///*[@id=\"flexibleDate\"]")
+    @FindBy(xpath = "///*[@id=\"flexibleDate\"]")
     public WebElement flexibleDateCheckbox;
 
-    @FindBy(xpath="/html/body/meso-native-marquee/section/div/div/div[1]/div/div/div[1]/div/section[1]/form/div[6]/label[1]")
+    @FindBy(xpath = "/html/body/meso-native-marquee/section/div/div/div[1]/div/div/div[1]/div/section[1]/form/div[6]/label[1]")
     public WebElement addHotelCheckbox;
 
-    @FindBy(xpath="/html/body/meso-native-marquee/section/div/div/div[1]/div/div/div[1]/div/section[1]/form/div[6]/label[2]")
+    @FindBy(xpath = "/html/body/meso-native-marquee/section/div/div/div[1]/div/div/div[1]/div/section[1]/form/div[6]/label[2]")
     public WebElement addCarCheckbox;
 
 
@@ -50,8 +52,9 @@ public class flight {
         return element;
     }
 
-    public static WebElement getDepartingCalendar(WebDriver driver) {
-        element = driver.findElement((By.id("flight-departing-hp-flight")));
+
+    public static WebElement getDepartingDate(WebDriver driver) {
+        element = driver.findElement((By.cssSelector("#package-departing-hp-package")));
         return element;
     }
 
@@ -92,7 +95,7 @@ public class flight {
 
     }
 
-    public static void getPreferredClassDropdown(WebDriver driver){
+    public static void getPreferredClassDropdown(WebDriver driver) {
         element = driver.findElement((By.xpath("//*[@id=\"flight-advanced-preferred-class-hp-flight\"]")));
         element.click();
     }
@@ -101,5 +104,5 @@ public class flight {
         element = driver.findElement((By.xpath("/html/body/meso-native-marquee/section/div/div/div[1]/div/div/div[1]/div/section[1]/form/div[9]/label/button")));
         element.click();
     }
-}
 
+}

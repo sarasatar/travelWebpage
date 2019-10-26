@@ -22,20 +22,13 @@ public class TC3 {
 
     //prepared environment
     @BeforeTest
-    public void setUp() throws Exception {
+    public void setUp() {
 
-        try {
-            System.setProperty("webdriver.gecko.driver", "/Users/gicastano/IdeaProjects/test_demo/chromedriver");
+        System.setProperty("webdriver.gecko.driver", "/Users/gicastano/IdeaProjects/test_demo/chromedriver");
 
-            //driver.manage().deleteAllCookies();
-            driver = new ChromeDriver();
-            baseUrl = "https://www.cheaptickets.com/";
-        }
-        catch (exception e){
-            String f = "Something went wrong starting chromedriver";
-            System.out.println(f);
-        }
-
+        //driver.manage().deleteAllCookies();
+        driver = new ChromeDriver();
+        baseUrl = "https://www.cheaptickets.com/";
     }
 
 
@@ -47,7 +40,7 @@ public class TC3 {
         flight.clickOnRoundTripTab(driver);
         flight.getDepartureField(driver).sendKeys("Medellin, Colombia (MDE-Jose Maria Cordova Intl.)");
         flight.getDestinationField(driver).sendKeys("Miami, FL (MIA-Miami Intl.)");
-        flight.getDepartingCalendar(driver).sendKeys("12/31/2018");
+        //flight.getDepartingCalendar(driver).sendKeys("12/31/2018");
 
         WebElement adultDropdown = flight.getAdultDropdown(driver);
         Select adults = new Select(adultDropdown);
